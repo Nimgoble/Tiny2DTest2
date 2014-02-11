@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sprite  material="common/default" atlas="megamanx_base.png">
+  <animation name="idle" isDefault="true" frameTime="1.0">
+    <frame texture="idle0001.png" />
+    <frame texture="idle0002.png" />
+    <frame texture="idle0003.png" />
+  </animation>
+  <animation name="run" frameTime="0.05">
+    <frame texture="run0001.png" />
+    <frame texture="run0002.png" />
+    <frame texture="run0003.png" />
+    <frame texture="run0004.png" />
+    <frame texture="run0005.png" />
+    <frame texture="run0006.png" />
+    <frame texture="run0007.png" />
+    <frame texture="run0008.png" />
+    <frame texture="run0009.png" />
+    <frame texture="run0010.png" />
+    <frame texture="run0011.png" />
+  </animation>
+  <animation name="jump" frameTime="0.3">
+    <frame texture="jump0001.png" />
+    <frame texture="jump0002.png" />
+    <frame texture="jump0003.png" />
+    <frame texture="jump0004.png" />
+    <frame texture="jump0005.png" />
+    <frame texture="jump0006.png" />
+    <frame texture="jump0007.png" />
+  </animation>
+</sprite>

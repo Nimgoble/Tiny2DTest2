@@ -1,0 +1,102 @@
+#include "Player.h"
+
+using namespace Tiny2D;
+
+Player::Player() :
+	facingLeft(false),
+	currentAnimation("idle"),
+	isJumping(false)
+{
+}
+
+Player::Player(const T2DTVec2D& position) :
+	facingLeft(false),
+	currentAnimation("idle"),
+	isJumping(false)
+{
+	this->position = position;
+}
+
+Player::~Player()
+{
+}
+
+void Player::Initialize()
+{
+	megaManSprite.Create("megamanx_base", false, Sprite::AtlasType::AtlasType_XML);
+	megaManSprite.PlayAnimation(currentAnimation);
+}
+
+void Player::OnUpdate(float deltaTime)
+{
+	const float speed = 5.0f;
+
+	bool isWalking = false;
+	b2Vec2 velocity = body->GetLinearVelocity();
+	if (Input::IsKeyDown(Input::Key_Left))
+	{
+		velocity.x = -speed;
+		//position.x -= deltaTime * speed;
+		isWalking = true;
+		facingLeft = true;
+	}
+	else if (Input::IsKeyDown(Input::Key_Right))
+	{
+		velocity.x = speed;
+		isWalking = true;
+		facingLeft = false;
+	}
+	else 
+		velocity.x = 0.0f;
+
+	if(Input::IsKeyDown(Input::Key_Up) && isJumping == false)
+	{
+		velocity.y = -15;
+		isJumping = true;
+	}
+
+	body->SetLinearVelocity(velocity);
+	//body->ApplyForceToCenter(velocity);
+
+	currentAnimation = (isWalking) ? "run" : "idle";
+
+	megaManSprite.PlayAnimation(currentAnimation);
+	megaManSprite.Update(deltaTime);
+}
+
+void Player::OnDraw(Tiny2D::Texture& renderTarget)
+{
+	Sprite::DrawParams params;
+	params.position = T2DTVec2D::FromBox2DVec(body->GetPosition());//position;
+	params.flipX = facingLeft;
+	//params.scale = 1.4f;//...maybe?
+	params.centered = true;
+
+	megaManSprite.Draw(&params);
+}
+
+void Player::OnCollision(SceneObject *other)
+{
+	isJumping = false;
+}
+
+void Player::PopulateBodyDefinition(b2BodyDef &def)
+{
+	def.type = b2BodyType::b2_dynamicBody;
+	def.fixedRotation = true;
+	def.gravityScale = 10.0f;
+	def.allowSleep = false;
+	SceneObject::PopulateBodyDefinition(def);
+}
+
+void Player::OnBodyInitialized()
+{
+	b2PolygonShape boundingBox;
+	boundingBox.SetAsBox((30.0f / 32.0f) * 0.5f, (30.0f / 32.0f) * 0.5f); //32 x 32 pixels
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &boundingBox;
+	fixtureDef.density = 0.0f;
+	fixtureDef.friction = 0.0f;
+	fixtureDef.restitution = 0.0f;
+	body->CreateFixture(&fixtureDef);
+}

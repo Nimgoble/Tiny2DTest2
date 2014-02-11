@@ -1,0 +1,5 @@
+TODO:
+X-Box2D position is at the center of the body.  I'm assuming that Tiny2D's texture position is top/left.
+X--Reconcile that in the cleanest way possible
+-SceneObject doesn't have a size member.  Should that be left up to the children?
+X-Find a way to determine what kind of b2Body the child wants BEFORE InitBody() is called.
