@@ -5,14 +5,22 @@ using namespace Tiny2D;
 Player::Player() :
 	facingLeft(false),
 	currentAnimation("idle"),
-	isJumping(false)
+	isJumping(false),
+	top(nullptr),
+	bottom(nullptr),
+	left(nullptr),
+	right(nullptr)
 {
 }
 
 Player::Player(const T2DTVec2D& position) :
 	facingLeft(false),
 	currentAnimation("idle"),
-	isJumping(false)
+	isJumping(false),
+	top(nullptr),
+	bottom(nullptr),
+	left(nullptr),
+	right(nullptr)
 {
 	this->position = position;
 }

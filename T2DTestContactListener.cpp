@@ -23,10 +23,10 @@ void T2DTestContactListener::BeginContact(b2Contact *contact)
 		objectB = static_cast<SceneObject *>(fixtureB);
 
 	if(objectA != nullptr)
-		objectA->OnCollision(objectB);
+		objectA->OnCollision(contact->GetFixtureA(), objectB);
 
 	if(objectB != nullptr)
-		objectB->OnCollision(objectA);
+		objectB->OnCollision(contact->GetFixtureB(), objectA);
 }
 
 void T2DTestContactListener::EndContact(b2Contact *contact)

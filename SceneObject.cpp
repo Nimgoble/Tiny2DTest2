@@ -17,7 +17,7 @@ void SceneObject::OnUpdate(float deltaTime)
 {
 }
 
-void SceneObject::OnCollision(SceneObject *other)
+void SceneObject::OnCollision(b2Fixture *ourFixture, SceneObject *other)
 {
 }
 

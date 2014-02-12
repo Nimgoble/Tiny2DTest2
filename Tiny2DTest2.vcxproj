@@ -46,7 +46,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)\ThirdParty\SDL\Lib;$(ProjectDir)\ThirdParty\Tiny2D\Lib;$(ProjectDir)\ThirdParty\Box2D_v2.2.1\Build\vs2010\bin\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\ThirdParty\SDL\Lib;$(ProjectDir)\ThirdParty\Tiny2D\Lib;$(ProjectDir)\ThirdParty\Box2D_v2.2.1\Lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Tiny2DDebug.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>

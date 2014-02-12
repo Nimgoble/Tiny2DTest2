@@ -11,7 +11,7 @@ public:
 
 	virtual void Initialize();
 	virtual void OnUpdate(float deltaTime);
-	virtual void OnCollision(SceneObject *other);
+	virtual void OnCollision(b2Fixture *ourFixture, SceneObject *other);
 	virtual void OnDraw(Tiny2D::Texture& renderTarget);
 	//Body
 	void InitBody(b2World *world);

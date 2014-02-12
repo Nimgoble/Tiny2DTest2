@@ -22,4 +22,9 @@ private:
 
 	std::string currentAnimation;
 	bool isJumping;
+
+	b2Fixture *top;
+	b2Fixture *bottom;
+	b2Fixture *left;
+	b2Fixture *right;
 };
