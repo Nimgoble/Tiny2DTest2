@@ -83,7 +83,7 @@ void Player::OnDraw(Tiny2D::Texture& renderTarget)
 	megaManSprite.Draw(&params);
 }
 
-void Player::OnCollision(SceneObject *other)
+void Player::OnCollision(b2Fixture *ourFixture, SceneObject *other)
 {
 	isJumping = false;
 }
@@ -100,11 +100,28 @@ void Player::PopulateBodyDefinition(b2BodyDef &def)
 void Player::OnBodyInitialized()
 {
 	b2PolygonShape boundingBox;
-	boundingBox.SetAsBox((30.0f / 32.0f) * 0.5f, (30.0f / 32.0f) * 0.5f); //32 x 32 pixels
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &boundingBox;
 	fixtureDef.density = 0.0f;
 	fixtureDef.friction = 0.0f;
 	fixtureDef.restitution = 0.0f;
-	body->CreateFixture(&fixtureDef);
+
+	
+	float topBottomWidth = (15.0f / 32.0f);//15 pixels
+	float leftRightHeight = (13.0f / 32.0f);//13 pixels
+	float otherSize = (1.0f / 32.0f);//1 pixel
+	b2Vec2 boxSize(topBottomWidth, topBottomWidth);
+
+	//calculations between pixels and meters are a pain in the ass.
+	boundingBox.SetAsBox(topBottomWidth, otherSize, b2Vec2(0.0f, -boxSize.y), 0.0f);
+	top = body->CreateFixture(&fixtureDef);
+
+	boundingBox.SetAsBox(topBottomWidth, otherSize, b2Vec2(0.0f, boxSize.y - otherSize), 0.0f);
+	bottom = body->CreateFixture(&fixtureDef);
+
+	boundingBox.SetAsBox(otherSize, leftRightHeight, b2Vec2(-boxSize.x, 0.0f), 0.0f);
+	left = body->CreateFixture(&fixtureDef);
+
+	boundingBox.SetAsBox(otherSize, leftRightHeight, b2Vec2(boxSize.x - otherSize, 0.0f), 0.0f);
+	right = body->CreateFixture(&fixtureDef);
 }

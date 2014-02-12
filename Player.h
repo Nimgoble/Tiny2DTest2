@@ -13,7 +13,7 @@ public:
 	virtual void Initialize();
 	virtual void OnUpdate(float deltaTime);
 	virtual void OnDraw(Tiny2D::Texture& renderTarget);
-	virtual void OnCollision(SceneObject *other);
+	virtual void OnCollision(b2Fixture *ourFixture, SceneObject *other);
 	virtual void PopulateBodyDefinition(b2BodyDef &def);
 	virtual void OnBodyInitialized();
 private:

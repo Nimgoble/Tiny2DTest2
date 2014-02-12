@@ -7,9 +7,9 @@ using namespace Tiny2D;
 void DebugDrawer::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
 {
 	Tiny2D::Shape::DrawParams params;
-	params.color = T2DTColorHelper::GetTiny2DColorFromBox2DColor(color);
+	params.color = Tiny2D::Color::Red;//T2DTColorHelper::GetTiny2DColorFromBox2DColor(color);
 	params.SetNumVerts(vertexCount);
-	params.SetGeometryType(Shape::Geometry::Type_TriangleFan);
+	params.SetGeometryType(Shape::Geometry::Type_Lines);
 
 	std::vector<float> xy;
 	for (int i = 0; i < vertexCount; i++) 
@@ -25,7 +25,8 @@ void DebugDrawer::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b
 void DebugDrawer::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
 {
 	Tiny2D::Shape::DrawParams params;
-	params.color = T2DTColorHelper::GetTiny2DColorFromBox2DColor(color);
+	params.color = Tiny2D::Color::Green;
+	params.color.a = 0.5f;//T2DTColorHelper::GetTiny2DColorFromBox2DColor(color);
 	params.SetNumVerts(vertexCount);
 	params.SetGeometryType(Shape::Geometry::Type_Triangles);
 
