@@ -213,3 +213,12 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+Debug/Tiny2DTest2.lastbuildstate
+Debug/cl.command.1.tlog
+Debug/link.command.1.tlog
+Debug/link.read.1.tlog
+Debug/link.write.1.tlog
+Debug/mt.command.1.tlog
+Debug/mt.read.1.tlog
+Debug/mt.write.1.tlog
+Debug/vc100.idb
