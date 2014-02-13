@@ -4,7 +4,7 @@
 class DebugDrawer : public b2Draw
 {
 public:
-	DebugDrawer(){SetFlags( b2Draw::e_shapeBit | b2Draw::e_aabbBit | b2Draw::e_centerOfMassBit );}
+	DebugDrawer(){SetFlags( b2Draw::e_aabbBit | b2Draw::e_shapeBit | b2Draw::e_centerOfMassBit );}
 	//void setRenderTarget(sf::RenderTarget *target){this->target = target;};
 	void DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color);
 	void DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color);

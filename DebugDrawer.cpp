@@ -6,21 +6,35 @@
 using namespace Tiny2D;
 void DebugDrawer::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
 {
-	Tiny2D::Shape::DrawParams params;
-	params.color = Tiny2D::Color::Red;//T2DTColorHelper::GetTiny2DColorFromBox2DColor(color);
-	params.SetNumVerts(vertexCount);
-	params.SetGeometryType(Shape::Geometry::Type_Lines);
+	//Tiny2D::Shape::DrawParams params;
+	//params.color = Tiny2D::Color::Red;//T2DTColorHelper::GetTiny2DColorFromBox2DColor(color);
+	//params.SetNumVerts(vertexCount);
+	//params.SetGeometryType(Shape::Geometry::Type_Lines);
 
-	std::vector<float> xy;
-	for (int i = 0; i < vertexCount; i++) 
+	//std::vector<float> xy;
+	//for (int i = 0; i < vertexCount; i++) 
+	//{
+	//	const b2Vec2 &vec = vertices[i];
+	//	xy.push_back(vec.x * 32.0f);
+	//	xy.push_back(vec.y * 32.0f);
+ //   }
+	//params.SetPosition(&xy[0]);
+
+	//Shape::Draw(&params);
+
+	//std::vector<Tiny2D::Vec2> xy;
+	for (int i = 0; (i + 1) < vertexCount; ++i) 
 	{
-		const b2Vec2 &vec = vertices[i];
-		xy.push_back(vec.x * 32);
-		xy.push_back(vec.y * 32);
+		Tiny2D::Shape::DrawLine(T2DTVec2D::FromBox2DVec(vertices[i]), T2DTVec2D::FromBox2DVec(vertices[i + 1]), Tiny2D::Color::Red);
+		//xy.push_back(T2DTVec2D::FromBox2DVec(vertices[i]));
+		//xy.push_back(T2DTVec2D::FromBox2DVec(vertices[i + 1]));
     }
-	params.SetPosition(&xy[0]);
+	//Line between the last vertex and the first
+	Tiny2D::Shape::DrawLine(T2DTVec2D::FromBox2DVec(vertices[vertexCount - 1]), T2DTVec2D::FromBox2DVec(vertices[0]), Tiny2D::Color::Red);
+	/*xy.push_back(T2DTVec2D::FromBox2DVec(vertices[vertexCount - 1]));
+	xy.push_back(T2DTVec2D::FromBox2DVec(vertices[0]));
 
-	Shape::Draw(&params);
+	Tiny2D::Shape::DrawLines(&xy[0], vertexCount / 2, Tiny2D::Color::Red);*/
 }
 void DebugDrawer::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
 {
@@ -28,14 +42,14 @@ void DebugDrawer::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, co
 	params.color = Tiny2D::Color::Green;
 	params.color.a = 0.5f;//T2DTColorHelper::GetTiny2DColorFromBox2DColor(color);
 	params.SetNumVerts(vertexCount);
-	params.SetGeometryType(Shape::Geometry::Type_Triangles);
+	params.SetGeometryType(Shape::Geometry::Type_TriangleFan);
 
 	std::vector<float> xy;
 	for (int i = 0; i < vertexCount; i++) 
 	{
 		const b2Vec2 &vec = vertices[i];
-		xy.push_back(vec.x * 32);
-		xy.push_back(vec.y * 32);
+		xy.push_back(vec.x * 32.0f);
+		xy.push_back(vec.y * 32.0f);
     }
 	params.SetPosition(&xy[0]);
 

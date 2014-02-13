@@ -37,7 +37,7 @@ void Scene::OnDraw(Tiny2D::Texture& renderTarget)
 	for(int i = 0; i < sceneObjects.size(); i++)
 		sceneObjects[i]->OnDraw(renderTarget);
 
-	//world->DrawDebugData();
+	world->DrawDebugData();
 
 	renderTarget.EndDrawing();
 	/*for(SceneObject *object : sceneObjects)

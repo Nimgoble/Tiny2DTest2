@@ -22,6 +22,10 @@ private:
 
 	std::string currentAnimation;
 	bool isJumping;
+	bool canJump;
+	bool jumped;
+	bool onGround;
+	bool wallSliding;
 
 	b2Fixture *top;
 	b2Fixture *bottom;

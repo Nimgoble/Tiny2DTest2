@@ -9,7 +9,11 @@ Player::Player() :
 	top(nullptr),
 	bottom(nullptr),
 	left(nullptr),
-	right(nullptr)
+	right(nullptr),
+	canJump(false),
+	jumped(false),
+	onGround(false),
+	wallSliding(false)
 {
 }
 
@@ -20,7 +24,11 @@ Player::Player(const T2DTVec2D& position) :
 	top(nullptr),
 	bottom(nullptr),
 	left(nullptr),
-	right(nullptr)
+	right(nullptr),
+	canJump(false),
+	jumped(false),
+	onGround(false),
+	wallSliding(false)
 {
 	this->position = position;
 }
@@ -66,7 +74,7 @@ void Player::OnUpdate(float deltaTime)
 	body->SetLinearVelocity(velocity);
 	//body->ApplyForceToCenter(velocity);
 
-	currentAnimation = (isWalking) ? "run" : "idle";
+	currentAnimation = (isJumping) ? "jumpStart" : (isWalking) ? "run" : "idle";
 
 	megaManSprite.PlayAnimation(currentAnimation);
 	megaManSprite.Update(deltaTime);
@@ -86,6 +94,14 @@ void Player::OnDraw(Tiny2D::Texture& renderTarget)
 void Player::OnCollision(b2Fixture *ourFixture, SceneObject *other)
 {
 	isJumping = false;
+	if(ourFixture == top)
+		int d = 0;
+	else if(ourFixture == bottom)
+		int d = 0;
+	else if(ourFixture == left)
+		int d = 0;
+	else if(ourFixture == right)
+		int d = 0;
 }
 
 void Player::PopulateBodyDefinition(b2BodyDef &def)
