@@ -18,17 +18,33 @@
     <frame texture="run0010.png" />
     <frame texture="run0011.png" />
   </animation>
-  <animation name="jumpStart" frameTime="0.3">
+  <animation name="jumpStart" frameTime="0.15">
     <frame texture="jump0001.png" />
     <frame texture="jump0002.png" />
     <frame texture="jump0003.png" />
   </animation>
-  <animation name="jumpInAir" frameTime="0.3">
+  <animation name="jumpInAir" frameTime="0.15">
     <frame texture="jump0004.png" />
   </animation>
-  <animation name="jumpFinish" frameTime="0.3">
+  <animation name="jumpFinish" frameTime="0.05">
     <frame texture="jump0005.png" />
     <frame texture="jump0006.png" />
     <frame texture="jump0007.png" />
+  </animation>
+  <animation name="wallSlide" frameTime="0.25">
+    <frame texture="wallslide0001.png" />
+    <frame texture="wallslide0002.png" />
+  </animation>
+  <animation name="teleportStart" frameTime="0.05">
+    <frame texture="teleport0001.png" />
+  </animation>
+  <animation name="teleportFinish" frameTime="0.05">
+    <frame texture="teleport0002.png" />
+    <frame texture="teleport0003.png" />
+    <frame texture="teleport0004.png" />
+    <frame texture="teleport0005.png" />
+    <frame texture="teleport0006.png" />
+    <frame texture="teleport0007.png" />
+    <frame texture="teleport0008.png" />
   </animation>
 </sprite>

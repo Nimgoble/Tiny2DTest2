@@ -495,6 +495,8 @@ namespace Tiny2D
 		void Update(float deltaTime);
 		//! Plays an animation of given name
 		void PlayAnimation(const std::string& name = std::string() /* Default animation */, AnimationMode mode = AnimationMode_Loop, float transitionTime = 0.0f);
+		//! Gets the current animation's name.
+		std::string GetCurrentAnimation();
 		//! Draws the sprite
 		void Draw(const DrawParams* params);
 		//! Draws the sprite

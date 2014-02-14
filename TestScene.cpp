@@ -21,8 +21,9 @@ void TestScene::CreateTestObjects()
 	Player *player = new Player();
 	player->Initialize();
 	player->InitBody(world);
-	player->SetPosition(T2DTVec2D(50.0f, 400.0f));
+	player->SetPosition(T2DTVec2D(50.0f, 0.0f));
 	sceneObjects.push_back(player);
+	player->TeleportToGround();
 
 	TestGeometry *ground = new TestGeometry(T2DTVec2D(240.0f, 480.0f), 14, TestGeometry::RepeatDirection::rdHorizontally);
 	ground->Initialize();

@@ -16,6 +16,8 @@ public:
 	virtual void OnCollision(b2Fixture *ourFixture, SceneObject *other);
 	virtual void PopulateBodyDefinition(b2BodyDef &def);
 	virtual void OnBodyInitialized();
+
+	void TeleportToGround();
 private:
 	Tiny2D::Sprite megaManSprite;
 	bool facingLeft;
@@ -26,9 +28,34 @@ private:
 	bool jumped;
 	bool onGround;
 	bool wallSliding;
+	bool teleporting;
 
-	b2Fixture *top;
+	/*b2Fixture *top;
 	b2Fixture *bottom;
 	b2Fixture *left;
-	b2Fixture *right;
+	b2Fixture *right;*/
+
+	Tiny2D::Font font;
+	void CheckMovement();
+	void UpdateAnimation();
+
+	bool CurrentAnimationDone();
+	b2Vec2 previousVelocity;
+
+	struct BorderInfo
+	{
+		BorderInfo()
+		{
+			touching = false;
+			fixture = NULL;
+		}
+		bool touching;
+		b2Fixture *fixture;
+	};
+
+	BorderInfo top;
+	BorderInfo bottom;
+	BorderInfo left;
+	BorderInfo right;
+
 };
